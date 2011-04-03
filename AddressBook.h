@@ -37,6 +37,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <AddressBook/AddressBook.h>
 
 #import "ABProperties.h"
 #import "ABAddressBook.h"
@@ -44,3 +45,4 @@
 #import "ABMultiValue.h"
 #import "ABPerson.h"
 #import "ABGroup.h"
+#import "ABSource.h"

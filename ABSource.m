@@ -41,6 +41,7 @@
 
 #import "ABAddressBook.h"
 #import "ABGroup.h"
+#import "ABPerson.h"
 
 extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> class );
 
@@ -58,6 +59,36 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
     
     NSArray * result = (NSArray *) WrappedArrayOfRecords( groups, [ABGroup class] );
     [groups release];
+    
+    return ( result );
+}
+
+- (NSArray *) allMembers
+{
+	NSArray * members = (NSArray *) ABAddressBookCopyArrayOfAllPeopleInSource( [ABAddressBook sharedAddressBook].addressBookRef, _ref );
+    if ( [members count] == 0 )
+    {
+        [members release];
+        return ( nil );
+    }
+    
+    NSArray * result = (NSArray *) WrappedArrayOfRecords( members, [ABPerson class] );
+    [members release];
+    
+    return ( result );
+}
+
+- (NSArray *) allMembersSortedInOrder: (ABPersonSortOrdering) order
+{
+    NSArray * members = (NSArray *) ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( [ABAddressBook sharedAddressBook].addressBookRef, _ref, order );
+    if ( [members count] == 0 )
+    {
+        [members release];
+        return ( nil );
+    }
+    
+    NSArray * result = (NSArray *) WrappedArrayOfRecords( members, [ABPerson class] );
+    [members release];
     
     return ( result );
 }

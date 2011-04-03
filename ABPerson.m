@@ -37,6 +37,7 @@
  */
 
 #import "ABPerson.h"
+#import "ABSource.h"
 
 @implementation ABPerson
 
@@ -65,6 +66,18 @@
 {
     ABRecordRef person = ABPersonCreate();
     if ( person == NULL )
+    {
+        [self release];
+        return ( nil );
+    }
+    
+    return ( [self initWithABRef: person] );
+}
+
+- (id)initInSource:(ABSource *)source
+{
+	ABRecordRef person = ABPersonCreateInSource(source.recordRef);
+	if ( person == NULL )
     {
         [self release];
         return ( nil );

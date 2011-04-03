@@ -41,10 +41,14 @@
 #import <AddressBook/ABSource.h>
 #import "ABRecord.h"
 
+@class ABPerson;
+
 @interface ABSource : ABRecord {
     
 }
 
 - (NSArray *) allGroups;
+- (NSArray *) allMembers;
+- (NSArray *) allMembersSortedInOrder: (ABPersonSortOrdering) order;
 
 @end

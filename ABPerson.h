@@ -40,9 +40,12 @@
 #import <AddressBook/ABPerson.h>
 #import "ABRecord.h"
 
+@class ABSource;
+
 @interface ABPerson : ABRecord
 
 // use -init to create a new person
+- (id)initInSource:(ABSource *)source;
 
 + (ABPropertyType) typeOfProperty: (ABPropertyID) property;
 + (NSString *) localizedNameOfProperty: (ABPropertyID) property;
