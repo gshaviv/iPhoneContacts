@@ -69,3 +69,9 @@
 - (ABPersonViewController *) viewController;
 
 @end
+
+@interface ABPersonViewController (ABPerson)
+
+- (ABPerson *)displayedPersonObject;
+
+@end

@@ -119,3 +119,12 @@
 }
 
 @end
+
+@implementation ABPersonViewController (ABPerson)
+
+- (ABPerson *)displayedPersonObject
+{
+	return [[[ABPerson alloc] initWithABRef:self.displayedPerson] autorelease];
+}
+
+@end

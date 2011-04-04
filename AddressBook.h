@@ -46,3 +46,4 @@
 #import "ABPerson.h"
 #import "ABGroup.h"
 #import "ABSource.h"
+#import "ABAddressBookUI.h"
