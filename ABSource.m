@@ -43,12 +43,10 @@
 #import "ABGroup.h"
 #import "ABPerson.h"
 
-extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> class );
-
 
 @implementation ABSource
 
-- (NSArray *) allGroups
+- (NSArray *) groups
 {
 	NSArray * groups = (NSArray *) ABAddressBookCopyArrayOfAllGroupsInSource( [ABAddressBook sharedAddressBook].addressBookRef, _ref );
     if ( [groups count] == 0 )

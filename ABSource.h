@@ -47,7 +47,7 @@
     
 }
 
-- (NSArray *) allGroups;
+- (NSArray *) groups;
 - (NSArray *) allMembers;
 - (NSArray *) allMembersSortedInOrder: (ABPersonSortOrdering) order;
 

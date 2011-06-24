@@ -43,13 +43,16 @@
 @class ABRecord, ABPerson, ABGroup, ABSource;
 @protocol ABAddressBookDelegate;
 
-extern NSString *ABAddressBookDidChangeNotification;
+extern NSString * const kABDatabaseChangedNotification;
+extern NSString * const kABDatabaseChangedExternallyNotification;
 
 enum
 {
     ABOperationNotPermittedByStoreError = kABOperationNotPermittedByStoreError
     
 };
+
+NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> wrapperClass );
 
 @interface ABAddressBook : NSObject <ABRefInitialization>
 {
@@ -80,7 +83,7 @@ enum
 @property (nonatomic, readonly) NSUInteger personCount;
 
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID;
-- (NSArray *) allPeople;
+- (NSArray *) people;
 - (NSArray *) allPeopleSorted;
 - (NSArray *) allPeopleWithName: (NSString *) name;
 
@@ -91,7 +94,7 @@ enum
 @property (nonatomic, readonly) NSUInteger groupCount;
 
 - (ABGroup *) groupWithRecordID: (ABRecordID) recordID;
-- (NSArray *) allGroups;
+- (NSArray *) groups;
 
 @end
 

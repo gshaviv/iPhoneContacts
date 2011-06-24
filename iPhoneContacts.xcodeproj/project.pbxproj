@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		389B3EC80FFD16F70070D43C /* ABAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EBB0FFD16F70070D43C /* ABAddressBook.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		389B3EC80FFD16F70070D43C /* ABAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EBB0FFD16F70070D43C /* ABAddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		389B3EC90FFD16F70070D43C /* ABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EBC0FFD16F70070D43C /* ABAddressBook.m */; };
-		389B3ECA0FFD16F70070D43C /* ABGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EBD0FFD16F70070D43C /* ABGroup.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		389B3ECA0FFD16F70070D43C /* ABGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EBD0FFD16F70070D43C /* ABGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		389B3ECB0FFD16F70070D43C /* ABGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EBE0FFD16F70070D43C /* ABGroup.m */; };
-		389B3ECC0FFD16F70070D43C /* ABMultiValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EBF0FFD16F70070D43C /* ABMultiValue.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		389B3ECC0FFD16F70070D43C /* ABMultiValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EBF0FFD16F70070D43C /* ABMultiValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		389B3ECD0FFD16F70070D43C /* ABMultiValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EC00FFD16F70070D43C /* ABMultiValue.m */; };
-		389B3ECE0FFD16F70070D43C /* ABPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC10FFD16F70070D43C /* ABPerson.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		389B3ECE0FFD16F70070D43C /* ABPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC10FFD16F70070D43C /* ABPerson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		389B3ECF0FFD16F70070D43C /* ABPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EC20FFD16F70070D43C /* ABPerson.m */; };
-		389B3ED00FFD16F70070D43C /* ABProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC30FFD16F70070D43C /* ABProperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		389B3ED10FFD16F70070D43C /* ABRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC40FFD16F70070D43C /* ABRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		389B3ED00FFD16F70070D43C /* ABProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC30FFD16F70070D43C /* ABProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		389B3ED10FFD16F70070D43C /* ABRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC40FFD16F70070D43C /* ABRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		389B3ED20FFD16F70070D43C /* ABRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EC50FFD16F70070D43C /* ABRecord.m */; };
-		389B3ED30FFD16F70070D43C /* ABRefInitialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC60FFD16F70070D43C /* ABRefInitialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		389B3ED40FFD16F70070D43C /* AddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC70FFD16F70070D43C /* AddressBook.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		389B3ED30FFD16F70070D43C /* ABRefInitialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC60FFD16F70070D43C /* ABRefInitialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		389B3ED40FFD16F70070D43C /* AddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B3EC70FFD16F70070D43C /* AddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		389B3F240FFD17920070D43C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389B3F230FFD17920070D43C /* AddressBook.framework */; };
 		389B40940FFFEFA50070D43C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389B40930FFFEFA50070D43C /* AddressBookUI.framework */; };
-		389B409C0FFFF5220070D43C /* ABAddressBookUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B409A0FFFF5220070D43C /* ABAddressBookUI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		389B409C0FFFF5220070D43C /* ABAddressBookUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 389B409A0FFFF5220070D43C /* ABAddressBookUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		389B409D0FFFF5220070D43C /* ABAddressBookUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B409B0FFFF5220070D43C /* ABAddressBookUI.m */; };
-		633CD00F1348DDC100A911BD /* ABSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 633CD00D1348DDC100A911BD /* ABSource.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		633CD00F1348DDC100A911BD /* ABSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 633CD00D1348DDC100A911BD /* ABSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		633CD0101348DDC100A911BD /* ABSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 633CD00E1348DDC100A911BD /* ABSource.m */; };
 		AA747D9F0F9514B9006C5449 /* iPhoneContacts_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* iPhoneContacts_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
@@ -224,6 +224,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhoneContacts_Prefix.pch;
 				PRODUCT_NAME = AddressBookWrappers;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/AddressBookObjects;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -237,6 +238,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPhoneContacts_Prefix.pch;
 				PRODUCT_NAME = AddressBookWrappers;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/AddressBookObjects;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

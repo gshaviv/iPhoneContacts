@@ -37,11 +37,10 @@
  */
 
 
+#import "ABAddressBook.h"
 #import "ABGroup.h"
 #import "ABPerson.h"
 #import "ABSource.h"
-
-extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> class );
 
 @implementation ABGroup
 

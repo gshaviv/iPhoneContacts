@@ -37,7 +37,7 @@
  */
 
 #import "ABAddressBookUI.h"
-#import <AddressBookUI/ABAddressFormatting.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 @implementation ABAddressBook (UserInterface)
 

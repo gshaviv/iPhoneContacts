@@ -43,7 +43,8 @@
 #import "ABGroup.h"
 #import "ABSource.h"
 
-NSString *ABAddressBookDidChangeNotification = @"ABAddressBookDidChange";
+NSString *const kABDatabaseChangedNotification = @"ABAddressBookDidChange";
+NSString *const kABDatabaseChangedExternallyNotification = @"ABAddressBookDidChange";
 
 NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> wrapperClass )
 {
@@ -140,7 +141,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 - (BOOL) save: (NSError **) error
 {
 	BOOL result = (BOOL) ABAddressBookSave(_ref, (CFErrorRef *)error);
-	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kABDatabaseChangedNotification object:self];
     return ( result );
 }
 
@@ -174,7 +175,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 {
     [_delegate addressBookDidChange: self];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kABDatabaseChangedNotification object:self];
 }
 
 @end
@@ -195,7 +196,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     return ( [[[ABPerson alloc] initWithABRef: person] autorelease] );
 }
 
-- (NSArray *) allPeople
+- (NSArray *) people
 {
     NSArray * people = (NSArray *) ABAddressBookCopyArrayOfAllPeople( _ref );
     if ( [people count] == 0 )
@@ -271,7 +272,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     return ( [[[ABGroup alloc] initWithABRef: group] autorelease] );
 }
 
-- (NSArray *) allGroups
+- (NSArray *) groups
 {
     NSArray * groups = (NSArray *) ABAddressBookCopyArrayOfAllGroups( _ref );
     if ( [groups count] == 0 )
