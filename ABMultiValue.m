@@ -142,7 +142,11 @@
         return ( nil );
     }
     
-    return ( [self initWithABRef: (CFTypeRef)ref] );
+	self = [self initWithABRef: (CFTypeRef)ref];
+	
+	CFRelease( ref );
+	
+    return ( self );
 }
 
 - (id) copyWithZone: (NSZone *) zone

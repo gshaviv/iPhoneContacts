@@ -70,8 +70,12 @@
         [self release];
         return ( nil );
     }
+	
+	self = [self initWithABRef: person];
+	
+	CFRelease( person );
     
-    return ( [self initWithABRef: person] );
+    return ( self );
 }
 
 - (id)initInSource:(ABSource *)source
