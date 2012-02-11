@@ -54,6 +54,7 @@
 
 - (BOOL) setImageData: (NSData *) imageData error: (NSError **) error;
 - (NSData *) imageData;
+- (NSData *) thumbnailData;
 @property (nonatomic, readonly) BOOL hasImageData;
 - (BOOL) removeImageData: (NSError **) error;
 
