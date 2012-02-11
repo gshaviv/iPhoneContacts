@@ -101,6 +101,16 @@
     return ( [imageData autorelease] );
 }
 
+- (NSData *) thumbnailData
+{
+	if (ABPersonCopyImageDataWithFormat != NULL) {
+		NSData * imageData = (NSData *) ABPersonCopyImageDataWithFormat( _ref, kABPersonImageFormatThumbnail);
+		return ( [imageData autorelease] );
+	}
+	
+	return ( nil );
+}
+
 - (BOOL) hasImageData
 {
     return ( (BOOL) ABPersonHasImageData(_ref) );
