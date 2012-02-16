@@ -89,6 +89,8 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
 
 - (void) dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
     if ( _ref != NULL )
         CFRelease( _ref );
     [super dealloc];
