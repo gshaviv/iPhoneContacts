@@ -43,8 +43,7 @@
 @class ABRecord, ABPerson, ABGroup, ABSource;
 @protocol ABAddressBookDelegate;
 
-extern NSString * const kABDatabaseChangedNotification;
-extern NSString * const kABDatabaseChangedExternallyNotification;
+extern NSString *ABAddressBookDidChangeNotification;
 
 enum
 {
@@ -83,7 +82,8 @@ NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> w
 @property (nonatomic, readonly) NSUInteger personCount;
 
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID;
-- (NSArray *) people;
+- (ABPerson *) personWithRecordRef:(ABRecordRef) recordRef;
+- (NSArray *) allPeople;
 - (NSArray *) allPeopleSorted;
 - (NSArray *) allPeopleWithName: (NSString *) name;
 

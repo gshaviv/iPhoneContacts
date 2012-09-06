@@ -90,6 +90,11 @@
     return ( [self initWithABRef: person] );
 }
 
+- (NSString*) description 
+{
+    return [NSString stringWithFormat: @"ABPerson %d - %@",[self recordID], [self compositeName]];
+}
+
 - (BOOL) setImageData: (NSData *) imageData error: (NSError **) error
 {
     return ( (BOOL) ABPersonSetImageData(_ref, (CFDataRef)imageData, (CFErrorRef *)error) );
@@ -101,14 +106,10 @@
     return ( [imageData autorelease] );
 }
 
-- (NSData *) thumbnailData
+- (NSData *) thumbnailImageData
 {
-	if (ABPersonCopyImageDataWithFormat != NULL) {
-		NSData * imageData = (NSData *) ABPersonCopyImageDataWithFormat( _ref, kABPersonImageFormatThumbnail);
-		return ( [imageData autorelease] );
-	}
-	
-	return ( [self imageData] );
+    NSData * imageData = (NSData *) ABPersonCopyImageDataWithFormat( _ref, kABPersonImageFormatThumbnail );
+    return ( [imageData autorelease] );
 }
 
 - (BOOL) hasImageData
@@ -129,6 +130,23 @@
 - (NSComparisonResult) compare: (ABPerson *) otherPerson sortOrdering: (ABPersonSortOrdering) order
 {
     return ( (NSComparisonResult) ABPersonComparePeopleByName(_ref, otherPerson->_ref, order) );
+}
+
+-(NSString*)getFirstName
+{
+	return [self valueForProperty:kABPersonFirstNameProperty];
+}
+
+-(NSString*)getLastName
+{
+	NSString * lastName = [self valueForProperty:kABPersonLastNameProperty];
+
+	if(lastName == nil)
+	{
+		lastName = [self compositeName];
+	}
+	
+	return lastName;
 }
 
 @end

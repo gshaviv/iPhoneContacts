@@ -47,6 +47,9 @@
 // use -init to create a new person
 - (id)initInSource:(ABSource *)source;
 
+@property (readonly, getter = getFirstName) NSString * firstName;
+@property (readonly, getter = getLastName) NSString * lastName;
+
 + (ABPropertyType) typeOfProperty: (ABPropertyID) property;
 + (NSString *) localizedNameOfProperty: (ABPropertyID) property;
 + (ABPersonSortOrdering) sortOrdering;
@@ -54,11 +57,12 @@
 
 - (BOOL) setImageData: (NSData *) imageData error: (NSError **) error;
 - (NSData *) imageData;
-- (NSData *) thumbnailData;
+- (NSData *) thumbnailImageData;
 @property (nonatomic, readonly) BOOL hasImageData;
 - (BOOL) removeImageData: (NSError **) error;
 
 - (NSComparisonResult) compare: (ABPerson *) otherPerson;
 - (NSComparisonResult) compare: (ABPerson *) otherPerson sortOrdering: (ABPersonSortOrdering) order;
+
 
 @end
