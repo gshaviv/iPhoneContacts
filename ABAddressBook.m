@@ -43,8 +43,7 @@
 #import "ABGroup.h"
 #import "ABSource.h"
 
-NSString *const kABDatabaseChangedNotification = @"ABAddressBookDidChange";
-NSString *const kABDatabaseChangedExternallyNotification = @"ABAddressBookDidChange";
+NSString *ABAddressBookDidChangeNotification = @"ABAddressBookDidChange";
 
 NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> wrapperClass )
 {
@@ -141,7 +140,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 - (BOOL) save: (NSError **) error
 {
 	BOOL result = (BOOL) ABAddressBookSave(_ref, (CFErrorRef *)error);
-	[[NSNotificationCenter defaultCenter] postNotificationName:kABDatabaseChangedNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
     return ( result );
 }
 
@@ -173,9 +172,10 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 - (void) _handleExternalChangeCallback
 {
-    [_delegate addressBookDidChange: self];
+    if(_delegate && [_delegate respondsToSelector:@selector(addressBookDidChange:)])
+        [_delegate addressBookDidChange: self];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kABDatabaseChangedNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
 }
 
 @end
@@ -187,6 +187,11 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     return ( (NSUInteger) ABAddressBookGetPersonCount(_ref) );
 }
 
+-(ABPerson *) personWithRecordRef:(ABRecordRef) recordRef
+{
+    return ( [[[ABPerson alloc] initWithABRef: recordRef] autorelease] );    
+}
+
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID
 {
     ABRecordRef person = ABAddressBookGetPersonWithRecordID( _ref, recordID );
@@ -196,7 +201,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     return ( [[[ABPerson alloc] initWithABRef: person] autorelease] );
 }
 
-- (NSArray *) people
+- (NSArray *) allPeople
 {
     NSArray * people = (NSArray *) ABAddressBookCopyArrayOfAllPeople( _ref );
     if ( [people count] == 0 )
