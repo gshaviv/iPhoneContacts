@@ -65,6 +65,8 @@ NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> w
 
 @property (nonatomic, assign) id<ABAddressBookDelegate> delegate;
 
+- (void) authorize: (void(^)(bool granted, NSError *error)) completed;
+
 - (BOOL) save: (NSError **) error;
 @property (nonatomic, readonly) BOOL hasUnsavedChanges;
 
