@@ -116,7 +116,15 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     if ( ABAddressBookCreateWithOptions != NULL )
     {
-        ref = ABAddressBookCreateWithOptions(NULL, NULL);
+        CFErrorRef error = NULL;
+        ref = ABAddressBookCreateWithOptions(NULL, &error);
+        
+        if ( error != NULL ) {
+            NSLog(@"Problem creating address book: %@", error);
+            
+            [self release];
+            return ( nil );
+        }
     }
     else
     {
