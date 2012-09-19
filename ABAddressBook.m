@@ -105,9 +105,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 	
 	ABAddressBookRegisterExternalChangeCallback( _ref, _ExternalChangeCallback, self );
     
-    [self authorize:^(bool granted, NSError *error) {
-        [self _handleExternalChangeCallback];
-    }];
+    [self authorize:nil];
     
     return ( self );
 }
@@ -165,21 +163,30 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
         if(status == kABAuthorizationStatusNotDetermined)
         {
             ABAddressBookRequestAccessWithCompletion(self.addressBookRef, ^(bool granted, CFErrorRef error) {
-                completed(granted, (NSError *)error);
+                [self _handleExternalChangeCallback];
+                if (completed != nil) {
+                    completed(granted, (NSError *)error);
+                }
             });
         }
         else if(status == kABAuthorizationStatusAuthorized)
         {
-            completed(YES, nil);
+            if (completed != nil) {
+                completed(YES, nil);
+            }
         }
         else if(status == kABAuthorizationStatusDenied || status == kABAuthorizationStatusRestricted)
         {
-            completed(NO, nil);
+            if (completed != nil) {
+                completed(NO, nil);
+            }
         }
     }
     else
     {
-        completed(YES, nil);
+        if (completed != nil) {
+            completed(YES, nil);
+        }
     }
 }
 
