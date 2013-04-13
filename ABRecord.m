@@ -78,11 +78,12 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
         return ( nil );
     }
     
-    if ( [super init] == nil )
-        return ( nil );
-    
-    // we have to trust the user that the type is correct -- no CFTypeRef checking in AddressBook.framework
-    _ref = (ABRecordRef) CFRetain(recordRef);
+	self = [super init];
+    if ( self != nil )
+	{
+		// we have to trust the user that the type is correct -- no CFTypeRef checking in AddressBook.framework
+		_ref = (ABRecordRef) CFRetain(recordRef);
+	}
     
     return ( self );
 }

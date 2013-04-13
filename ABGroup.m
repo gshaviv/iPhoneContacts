@@ -52,8 +52,12 @@
         [self release];
         return ( nil );
     }
+	
+	ABGroup *groupObj = [self initWithABRef: group];
+	
+	CFRelease(group);
     
-    return ( [self initWithABRef: group] );
+    return ( groupObj );
 }
 
 - (ABSource *) source

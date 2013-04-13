@@ -97,15 +97,16 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
         return ( nil );
     }
     
-    if ( [super init] == nil )
-        return ( nil );
-    
-    // we can't to CFTypeID checking on AB types, so we have to trust the user
-    _ref = (ABAddressBookRef) CFRetain(ref);
-	
-	ABAddressBookRegisterExternalChangeCallback( _ref, _ExternalChangeCallback, self );
-    
-    [self authorize:nil];
+	self = [super init];
+    if ( self != nil )
+	{
+		// we can't to CFTypeID checking on AB types, so we have to trust the user
+		_ref = (ABAddressBookRef) CFRetain(ref);
+		
+		ABAddressBookRegisterExternalChangeCallback( _ref, _ExternalChangeCallback, self );
+		
+		[self authorize:nil];
+	}
     
     return ( self );
 }
@@ -122,6 +123,10 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
         if ( error != NULL ) {
             NSLog(@"Problem creating address book: %@", error);
             
+			if ( ref != NULL )
+			{
+				CFRelease(ref);
+			}
             [self release];
             return ( nil );
         }
@@ -371,8 +376,12 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 	ABRecordRef source = ABAddressBookCopyDefaultSource( _ref );
 	if ( source == NULL )
         return ( nil );
+	
+	ABSource *sourceObj = [[ABSource alloc] initWithABRef: source];
+	
+	CFRelease(source);
     
-    return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
+    return ( [sourceObj autorelease] );
 }
 
 - (NSArray *) allSources

@@ -50,10 +50,11 @@
         return ( nil );
     }
     
-    if ( [super init] == nil )
-        return ( nil );
-    
-    _ref = (ABMultiValueRef) CFRetain(ref);
+	self = [super init];
+    if ( self != nil )
+	{
+		_ref = (ABMultiValueRef) CFRetain(ref);
+	}
     
     return ( self );
 }
@@ -74,7 +75,10 @@
 {
     ABMultiValueRef ref = ABMultiValueCreateMutableCopy( _ref );
     ABMutableMultiValue * result = [[ABMutableMultiValue allocWithZone: zone] initWithABRef: (CFTypeRef)ref];
-    CFRelease( ref );
+	if ( ref != NULL )
+	{
+		CFRelease( ref );
+	}
     return ( result );
 }
 
@@ -154,7 +158,9 @@
     // no AB method to create an immutable copy, so we do a mutable copy but wrap it in an immutable class
     CFTypeRef _obj = ABMultiValueCreateMutableCopy(_ref);
     ABMultiValue * result = [[ABMultiValue allocWithZone: zone] initWithABRef: _obj];
-    CFRelease( _obj );
+	if ( _obj != NULL ) {
+		CFRelease( _obj );
+	}
     return ( result );
 }
 

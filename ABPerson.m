@@ -86,8 +86,12 @@
         [self release];
         return ( nil );
     }
+	
+	ABPerson *personObj = [self initWithABRef: person];
+	
+	CFRelease(person);
     
-    return ( [self initWithABRef: person] );
+    return ( personObj );
 }
 
 - (NSString*) description 

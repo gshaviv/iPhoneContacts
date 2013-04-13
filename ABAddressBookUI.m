@@ -82,6 +82,7 @@
     {
         NSString * str = ABCreateStringWithAddressDictionary( [addresses valueAtIndex: i], addCountryName );
         [values addValue: str withLabel: [addresses labelAtIndex: i] identifier: NULL];
+		[str release];
     }
     
     ABMultiValue * result = [values copy];
@@ -108,7 +109,8 @@
     if ( i >= addresses.count )
         return ( nil );
     
-    return ( ABCreateStringWithAddressDictionary([addresses valueAtIndex: i], addCountryName) );
+	NSString *localizedAddressString = ABCreateStringWithAddressDictionary([addresses valueAtIndex: i], addCountryName);
+    return ( [localizedAddressString autorelease] );
 }
 
 - (ABPersonViewController *) viewController
