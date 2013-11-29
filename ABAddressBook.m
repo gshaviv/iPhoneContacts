@@ -284,30 +284,31 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 
 - (NSArray *) allPeopleSorted
 {
-  CFArrayRef people = ABAddressBookCopyArrayOfAllPeople( _ref );
-  if ( CFArrayGetCount(people) == 0 )
-  {
-      CFRelease(people);
-      return ( nil );
-  }
-  
-  CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault,
-                                    CFArrayGetCount(people),
-                                    people
-                                    );
-  CFRelease(people);
-  CFArraySortValues(
-            peopleMutable,
-            CFRangeMake(0, CFArrayGetCount(peopleMutable)),
-            (CFComparatorFunction) ABPersonComparePeopleByName,
-            (void*) ABPersonGetSortOrdering()
-            );
+    CFArrayRef people = ABAddressBookCopyArrayOfAllPeople( _ref );
+    if ( CFArrayGetCount(people) == 0 )
+    {
+        CFRelease(people);
+        return ( nil );
+    }
 
-  NSArray *peopleSorted = (NSArray*)peopleMutable;
-  NSArray *result = WrappedArrayOfRecords( peopleSorted, [ABPerson class] );
-  [peopleSorted release];
+    CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault,
+                                                               CFArrayGetCount(people),
+                                                               people
+                                                               );
+    CFRelease(people);
+    NSInteger context = ABPersonGetSortOrdering();
+    CFArraySortValues(
+                      peopleMutable,
+                      CFRangeMake(0, CFArrayGetCount(peopleMutable)),
+                      (CFComparatorFunction) ABPersonComparePeopleByName,
+                      (void*) context
+                      );
 
-  return ( result );
+    NSArray *peopleSorted = (NSArray*)peopleMutable;
+    NSArray *result = WrappedArrayOfRecords( peopleSorted, [ABPerson class] );
+    [peopleSorted release];
+    
+    return ( result );
 }
 
 - (NSArray *) allPeopleWithName: (NSString *) name

@@ -209,7 +209,7 @@
 }
 
 - (NSString*) description {
-    return [NSString stringWithFormat: @"ABMultiValue with %d elements",[self count]];
+    return [NSString stringWithFormat: @"ABMultiValue with %lu elements",(unsigned long)[self count]];
 }
 
 @end
