@@ -109,5 +109,5 @@ NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> w
 @end
 
 @protocol ABAddressBookDelegate <NSObject>
-- (void) addressBookDidChange: (ABAddressBook *) addressBook;
+- (void) addressBookHasChanged: (ABAddressBook *) addressBook;
 @end
