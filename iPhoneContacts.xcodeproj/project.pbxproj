@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		389B3EC90FFD16F70070D43C /* ABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EBC0FFD16F70070D43C /* ABAddressBook.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
-		389B3ECB0FFD16F70070D43C /* ABGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EBE0FFD16F70070D43C /* ABGroup.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
+		389B3EC90FFD16F70070D43C /* ABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EBC0FFD16F70070D43C /* ABAddressBook.m */; settings = {COMPILER_FLAGS = "-w "; }; };
+		389B3ECB0FFD16F70070D43C /* ABGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EBE0FFD16F70070D43C /* ABGroup.m */; settings = {COMPILER_FLAGS = "-w "; }; };
 		389B3ECD0FFD16F70070D43C /* ABMultiValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EC00FFD16F70070D43C /* ABMultiValue.m */; };
 		389B3ECF0FFD16F70070D43C /* ABPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EC20FFD16F70070D43C /* ABPerson.m */; };
 		389B3ED20FFD16F70070D43C /* ABRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B3EC50FFD16F70070D43C /* ABRecord.m */; };
